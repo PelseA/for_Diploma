@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>registration</title>
+	<link rel="stylesheet" type="text/css" href="../css/new-reg.css">
+</head>
+<body>
+	<center><button onclick="show('block')" class="
+	regButton">Регистрация</button>
+		<img src="../img/paris.jpg">
+		</center>
+	<div id='window'>
+		<!--картинка крестика 'закрыть' -->
+		<img class='close' src="../img/close.png" alt="" onclick="show('none')">
+		<!-- задний прозрачный фон-->
+		<div id='grey' onclick="show('none')"></div>
+	<div class='form_reg'>
+		<h2>Регистрация</h2>
+    <form action="index.html" name="f1">
+        <input type="text" placeholder="Имя" name="name1" class="input">
+        <input type="text" placeholder="Фамилия" name="name2" class="input">
+        <input type="email" placeholder="Емеил" name="email1" class="input">
+        <input type="email" placeholder="Подтвердите адрес Электронной Почты" name="email2" class="input">
+        <input type="password" placeholder="Пароль" name="pass1" class="input">
+        <input type="password" placeholder="Подтвердите пароль" name="pass2" class="input">
+        <input type='tel' placeholder="Мобильный телефон" name="tel" class="input">
+        <input type="submit" value="Регистрация" name="sab" class="input"> Нажимая «Регистрация», вы подтверждаете, что прочитали и согласны с нашими Условиями Пользования и Политикой Конфиденциальности.
+    </form>
+</div>
+	</div>
+	<script type="text/javascript" src="../js/index_reg.js"></script>
+</body>
+</html>

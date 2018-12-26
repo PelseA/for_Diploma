@@ -1,0 +1,88 @@
+html{
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+body{
+	/*background: url(../img/back.jpg);*/
+	margin: 0;
+	padding: 0 15px;
+	display: flex;
+	flex-direction: column;
+	flex: auto;
+}
+header{
+	background: #58EA55;
+	width: 100%;
+	max-width: 1004px;
+	min-width: 430px;
+	margin: 0 auto 10px;
+	padding: 30px 0 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	border-radius: 8px;
+}
+.logo{
+	/*background: #E4ACDB;*/
+	width: 160px;
+	height: 60px;
+	font-size: 0;
+	margin: -30px 0 0 20px;
+	display: flex;
+	flex: none;
+	align-items: center;
+}
+.reg{
+	background: #D07D3A;
+	width: 100%;
+	max-width: 1004px;
+	min-width: 430px;
+	margin: 10px auto;
+	flex-direction: row;
+	justify-content: space-around;
+	box-sizing: border-box;
+	display: flex;
+	width: 90%;
+	border-radius: 8px;
+}
+ul{
+	list-style-type: none;
+	margin: auto;
+}
+.foto{
+	background: #71D06E;
+	width: 100%;
+	max-width: 1004px;
+	min-width: 430px;
+	margin: 10px auto;
+	justify-content: center;
+	box-sizing: border-box;
+	display: flex;
+	width: 90%;
+	border-radius: 8px;
+}
+fieldset{
+	border-radius: 7px;
+	margin:10px;
+}
+
+.filddd{
+	background: red;
+	width: 147px;
+}
+
+.filddd input{
+	margin: 10px 0;
+	padding-left: 5px; 
+	width: 200px;
+	height: 40px;
+	border: 0;
+	border-radius: 5px;
+}
+.btn-close{
+	background: none;
+	border: none;
+}

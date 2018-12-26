@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Registration</title>
+	<link rel="stylesheet" type="text/css" href="../css/registr.css">
+</head>
+<body>
+	<header class="header">
+		<a href="../index-igra.html" class="logo">
+			<img class="owl" src="../icons/Logo_owl.png">
+		</a>
+	</header>
+
+	<form id="reg" action="" method="post">
+		<div class="reg">
+			<fieldset>
+				<legend>Ваш пол</legend>
+				<ul>
+					<li><label><input name="some_name" type="radio">мужской</label></li>
+					<li><label><input name="some_name" type="radio">женский</label></li>
+				</ul>
+			</fieldset>
+				<!-- т.к. добавлен атрибут name, то можно выбрать только один вариант-->
+				<!-- убрать атрибут name можно отметить все варианты -->
+			<fieldset>
+				<legend>Ваши увлечения</legend>
+				<ul>
+					<li><label><input type="checkbox" name="hob1" value="1">Литература</label></li>
+					<li><label><input type="checkbox" name="hoby2" value="2">Компьютеры</label></li>
+					<li><label><input type="checkbox" name="hob3" value="3">Спорт</label></li>
+					<li><label><input type="checkbox" name="hob4" value="4">Математика</label></li>
+					<li><label><input type="checkbox" name="hob5" value="5">Иностранные языки</label></li>
+					<li><label><input type="checkbox" name="hob6" value="6">Естественные науки</label></li>
+					<li><label><input type="checkbox" name="hob7" value="7">Философия</label></li>
+					<li><label><input type="checkbox" name="hob8" value="8">Музыка</label></li>
+					<li><label><input type="checkbox" name="hob9" value="9">Дизайн</label></li>
+					<li><label><input type="checkbox" name="hob10" value="10">Фотография</label></li>
+					<li><label><input type="checkbox" name="hob11" value="11">Путешествия</label></li>
+					<li><label><input type="checkbox" name="hob12" value="12">Рукоделие</label></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>Какую литературу вы предпочетаете</legend>
+				<ul>
+					<li><label><input type="checkbox" name="lit1" value="">Художественные произведения</label></li>
+					<li><label><input type="checkbox" name="lit2" value="">Науная и научно-популярная литература</label></li>
+					<li><label><input type="checkbox" name="lit3" value="">Справочная литература</label></li>
+					<li><label><input type="checkbox" name="lit4" value="">Учебная литература</label></li>
+					<li><label><input type="checkbox" name="lit5" value="">Техническая литература</label></li>
+					<li><label><input type="checkbox" name="lit6" value="">Военная литература</label></li>
+					<li><label><input type="checkbox" name="lit7" value="">Музыкальная литература</label></li>
+					<li><label><input type="checkbox" name="lit8" value="">Историческая литература</label></li>
+					<li><label><input type="checkbox" name="lit9" value="">Мотивационная литература</label></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>Укажите ваш возраст</legend>
+				<div>
+					<label for="date">Год рождения</label>
+					<input id="date" type="date">
+					<input type="hidden"> <!-- защита от ботов -->
+				</div>
+			</fieldset>
+		</div>
+
+		<div class="foto">
+			<fieldset>
+				<legend>Загрузите фото для профиля</legend>
+					<input id="imgFile" type="file" accept="image/*">
+				</div>
+			</fieldset>
+		</div>
+		<div class="reg">
+			<fieldset class="filddd">
+				<legend>Регистрация</legend>
+				<input class="reg__input" type="text" name="name" placeholder="введите Имя">
+				<input class="reg__input" id="email" type="email" placeholder="Введите email">		
+				<input id="pwd" type="password" placeholder="Введите пароль">
+			</fieldset>
+			<div>
+				<input type="submit" title="зарегистрироваться">
+				<input type="reset" value="x" class="btn-close">
+			</div>
+		</div>
+	</form>
+	
+	
+	
+</body>
+</html>

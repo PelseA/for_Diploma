@@ -1,0 +1,13 @@
+{
+    "name": "aleksandra/igra",
+    "description": "diploma project",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+    	"psr-4": {
+    		"Aleksandra\\Igra\\": "private/"
+    	}
+    }
+}
