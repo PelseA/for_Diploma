@@ -72,18 +72,6 @@ $categ3 = [
 		<?php endforeach; ?>
 		</div>
 		<div class="col"> 
-			<div class="search">
-				<form  action="http://google.com/search" name="search-form" target="_blank">
-					<!-- <input  type="hidden" name="q" value="site:file:///C:/HomeTask/HT_21-09/MyProect/index-igra.html" /> -->
-					<input type="search" class="google" name="q" value="" placeholder="search..." />
-					<button class="but" type=submit><img src="img/goog.png"></button>
-				</form>
-				<form  action="http://yandex.ru/search" name="search-form" target="_blank">
-					<!-- <input  type="hidden" name="q" value="site:file:///C:/HomeTask/HT_21-09/MyProect/index-igra.html" /> -->
-					<input class="yandex" name="q" value="" placeholder="search..."/>
-					<button class="but" type=submit><img src="img/ya.png"></button>
-				</form>
-			</div>
 			<div class="sendQuest">
 				<p><a href="#openModal3">Станьте автором вопроса</a></p>
 				<p><a href="">Правила написания вопросов</a></p>

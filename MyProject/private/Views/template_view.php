@@ -11,9 +11,34 @@
 </head>
 <body>
 	<header class="header">
-		<a href="#" class="logo">
-			<img  src="/img/leave1.png" title="На главную"> 
+		<a href="index_view.php">
+			На главную
 		</a>
+
+		<div class="search">
+			<form  action="http://google.com/search" name="search-form" target="_blank">
+				<!-- <input  type="hidden" name="q" value="site:file:///C:/HomeTask/HT_21-09/MyProect/index-igra.html" /> -->
+				<div class="searching">
+					<div class="search_string">
+						<input type="search" class="google" name="q" value="" placeholder="search..." />
+					</div>
+					<div class="btn1">
+						<button class="but1" type=submit><img src="img/goog.png"></button>
+					</div>
+				</div>
+			</form>
+			<form  action="http://yandex.ru/search" name="search-form" target="_blank">
+				<!-- <input  type="hidden" name="q" value="site:file:///C:/HomeTask/HT_21-09/MyProect/index-igra.html" /> -->
+				<div class="searching">
+					<div class="search_string">
+						<input type="search" class="yandex" name="q" value="" placeholder="search..."/>
+					</div>
+					<div  class="btn2">
+						<button class="but" type=submit><img src="img/ya.png"></button>
+					</div>
+				</div>
+			</form>
+		</div>
 		
 		<nav class="nav">
 			<ul class="menu">
