@@ -1,13 +1,19 @@
 <?php
 namespace Aleksandra\Igra\Base;
 
+
 class DBConnection
 {
    private $connection;
 
+   private $server = 'localhost';
+   private $db_name = 'project_igra';
+   private $username = 'root';
+   private $pwd = '';
+
    public function __construct()
    {
-       $this->connection = $this->connect();
+       $this->connection = $this->connect($this->server, $this->db_name, $this->username, $this->pwd);
    }
 
     private function connect(
@@ -20,7 +26,7 @@ class DBConnection
           $connection =  new \PDO("mysql:host=$server;dbname=$db_name",
                $username, $pwd, $opt);
        } catch (\PDOException $exception){
-           // обработка ошибки
+           var_dump($exception);
        }
        return $connection;
    }
@@ -52,6 +58,11 @@ class DBConnection
         return $statement->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public function update($sql_string, $params){
+    	$statement = $this->connection->prepare($sql_string);
+        return $statement->execute($params);
+    }
+
     // подготовленный запрос
     public function execute($sql_string, $params, $all=true){
         $statement = $this->connection->prepare($sql_string);
@@ -60,6 +71,7 @@ class DBConnection
         if (!$all) {
             return $statement->fetch(\PDO::FETCH_ASSOC);
         }
+        
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

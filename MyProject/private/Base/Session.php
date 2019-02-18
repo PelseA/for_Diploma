@@ -30,6 +30,10 @@ class Session
 		return $this->session[$key];
 	}
 
+	public function isset($key){
+		return isset($this->session[$key]);
+	}
+
 	public function close()
 	{
 		session_destroy();

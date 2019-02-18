@@ -1,13 +1,75 @@
-@media screen and (max-width: 768px){}
-	
-@media screen and (max-width: 480px){
- .nav{
- 	display: none;
- }
+@media screen and (max-width: 768px){
+	main{
+		height: auto;
+		margin: 0 auto;
+		flex: auto;
+		flex-direction: column;
+		/*padding: 30px 0 10px;*/
+		/*flex-wrap: wrap;*/
+		/*align-items: flex-end;*/
+		/*justify-content: space-between;*/
+		box-sizing: border-box;
+		display: flex;
+	}
+	.home{ 
+	margin-left: 55px;
+	}
+	.social img{
+    width: 40px;
+    height: 40px;
+	}
+	.social {
+    padding: 0 20px 0 50px;
+	}
+	#slides{
+	margin: 0 auto;
+	height: 250px;
+	width: 400px;
+	}
+	.wrap-text{
+    margin-top: 180px;
+	}
+	.categ{
+	width: 120px;
+	height: 160px;
+	border-radius:5px 0;
+	box-shadow: 1px 2px #556552;
+	margin: 5px;
+	}
+	.categ h3{
+		font-size: 0.8rem;
+	}
 }
-@media screen and (max-width: 320px){
- .nav{
- 	display: none;
- }	
+
+@media screen and (max-width: 480px){
+	.categ{
+	width: 120px;
+	height: 150px;
+	border-radius:4px 0;
+	box-shadow: 1px 2px #556552;
+	margin: 4px;
+	}
+	.categ h3{
+	font-size: 0.6rem;
+	}
+	.calend_ru{
+	display: none;
+	}
+	.home{
+	margin: 0 auto;
+	}
+}
+@media screen and (max-width: 360px){
+	.categ{
+	width: 100px;
+	height: 120px;
+	border-radius:3px 0;
+	box-shadow: 1px 2px #556552;
+	margin: 4px;
+	}
+	
+	.calend_ru{
+	display: none;
+	}
 	
 }

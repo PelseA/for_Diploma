@@ -14,7 +14,6 @@ class IndexController extends Controller
 	public function __construct()
 	{
 		$this->categoryModel = new CategoriesModel();
-		// $this->goodsModel = new GoodsModel();
 	}
 
 	public function indexAction()
@@ -22,28 +21,17 @@ class IndexController extends Controller
 		$title = 'Главная';
 		$view = 'index_view.php';
 
-		$articles = $this->categoryModel->getCategories();
-		// $goods =  $this->goodsModel->getGoods(5);
+		$category = $this->categoryModel->getCategories();
+	//var_dump($category);
+		$fact = $this->categoryModel->getFacts();//себе:и не вздумай это еще раз отсюда убрать
 		$data = [
-			'title'=>$title
-
+			'categories'=>$category,
+			'facts'=>$fact,
+			'title'=>$title,
+			// 'style' =>$style
 		];
-
-		$categ1 = [
-	[
-		'title' => 'Флора и фауна',
-		'icon' => 'icons/salamandra.svg'
-	],
-	[
-		'title' => 'О, да, еда!',
-		'icon' => '../icons/food.png'
-	],
-	[
-		'title' => 'Литература',
-		'icon' => '../icons/ink.svg'
-	]
-];
-		parent::generateResponse($view, $data);
+		
+		return parent::generateResponse($view, $data);
 	}
 
 

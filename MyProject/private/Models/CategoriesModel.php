@@ -1,102 +1,91 @@
 <?php 
 namespace Aleksandra\Igra\Models;
+use Aleksandra\Igra\Base\DBConnection;
 class CategoriesModel
 {
-	public function getQuestions(){
-		$questions = [
-			[
-				'legend'=>'Вопрос 1',
-				'question'=>'Как называются растения сухих мест обитания, способные переносить продолжительную засуху и воздействие высоких температур?',
-				'var1'=>'Гигрофиты',
-				'var2'=>'Ксерофиты',
-				'var3'=>'Мезофиты',
-				'modal-href'=>'#openModal3',
-				'modal-id'=>'openModal3',
-				'tip'=>"В переводе с греческого 'КСЕРОС' означает сухой. 'ГИГРОС' - влажный. 'МЕЗОС' - средний."
-			],
-			[
-				'legend'=>'Вопрос 2',
-				'question'=>'Какое животное зимой впадает в спячку?',
-				'var1'=>'Барсук',
-				'var2'=>'Волк',
-				'var3'=>'Белка',
-				'modal-href'=>'#openModal4',
-				'modal-id'=>'openModal4',
-				'tip'=>"Только ОДИН представитель семейства куньих впадает зимой в спячку."
-			],
-			[
-				'legend'=>'Вопрос 3',
-				'question'=>'Самое большое озеро на планете Земля',
-				'var1'=>'Озеро Мичиган',
-				'var2'=>'Каспийское море',
-				'var3'=>'Озеро Танганьика',
-				'modal-href'=>'#openModal5',
-				'modal-id'=>'openModal5',
-				'tip'=>"Самый крупный замкнутый водоем находится на стыке Европы и Азии."
-			],
-			[
-				'legend'=>'Вопрос 4',
-				'question'=>'Самое большое озеро на планете Земля',
-				'var1'=>'Озеро Мичиган',
-				'var2'=>'Каспийское море',
-				'var3'=>'Озеро Танганьика',
-				'modal-href'=>'#openModal6',
-				'modal-id'=>'openModal6',
-				'tip'=>"Самый крупный замкнутый водоем находится на стыке Европы и Азии."
-			]
-		];
-			//получение последних  статей из бд
-		return $questions ;
+	private $db;
+	public function __construct()
+	{
+        $this->db = new DBConnection();	
 	}
 
-	public function getQuestionByLegend($legend) {
-		//получить вопросы из бд
+	/*public function getQuestionByCategory($category) {
+		$sql = "SELECT * FROM question WHERE categName=:category ORDER BY RAND() LIMIT 4";
+
+        $params = ['category'=>$category];
+
+        return $this->db->execute($sql, $params);
+	}*/
+	public function getQuestionByCategory($category) {
+		$sql = "SELECT 
+					q.id, 
+				    q.category, 
+				    q.question, 
+				    q.tip, 
+				    a.answer, 
+				    a.true_false 
+				FROM `question` q 
+				JOIN `answer` a ON q.id = a.question_id
+				WHERE q.categName=:category
+				ORDER BY RAND(q.id)
+				LIMIT 15";
+
+        $params = ['category'=>$category];
+
+        $result = $this->db->execute($sql, $params);
+        return $this->prepareQuestions($result);
+	}
+
+	private function prepareQuestions($result){
+		$questions = [];
+		foreach($result as $row) {
+			if(isset($temp) && $temp['id'] != $row['id']) {
+				$questions[] = $temp;
+				$temp = $this->getQuestion($row);
+			} else if (!isset($temp)) {
+				$temp = $this->getQuestion($row);
+			}
+			$temp['answers'][] = $this->getAnswer($row);
+		}
+		if (isset($temp)) {
+			$questions[] = $temp;
+		}
+		return $questions;
+	}
+
+	private function getQuestion($row){
 		return [
-				'legend'=>'Вопрос 4',
-				'question'=>'Самое большое озеро на планете Земля',
-				'var1'=>'Озеро Мичиган',
-				'var2'=>'Каспийское море',
-				'var3'=>'Озеро Танганьика',
-				'modal-href'=>'#openModal6',
-				'modal-id'=>'openModal6',
-				'tip'=>"Самый крупный замкнутый водоем находится на стыке Европы и Азии."
+			id => $row['id'],
+			category => $row['category'],
+			tip => $row['tip'],
+			question => $row['question'],
+			answers => []
+		];
+	}
+
+	private function getAnswer($row){
+		return [
+			answer => $row['answer'],
+			true_false => $row['true_false']
 		];
 	}
 
 	public function getCategories(){
-		$categ = [
-			[
-				'title' => 'Флора и фауна',
-				'icon' => '../icons/salamandra.svg'
-			],
-			[
-				'title' => 'О, да, еда!',
-				'icon' => '../icons/food.png'
-			],
-			[
-				'title' => 'Литература',
-				'icon' => '../icons/ink.svg'
-			],
-			[
-				'title' => 'История',
-				'icon' => '../icons/sandglass.png'
-			],
-			[
-				'title' => 'Технический прогресс',
-				'icon' => '../icons/progress24.svg'
-			],
-			[
-				'title' => 'Искусство и культура',
-				'icon' => '../icons/column.svg'
-			],
-			[
-				'title' => 'Вокруг света',
-				'icon' => '../icons/earth.svg'
-			],
-			[
-				'title' => 'Кот в мешке',
-				'icon' => ''
-			],
-		];	return $categ;
+		$sql = "SELECT * FROM Category";
+      
+        return $this->db->queryAll($sql);
 	}
+	public function getAnswerById($id_question){
+		$sql = "SELECT * FROM Answer WHERE Question_id=:id_question";
+		$params = ['id_question'=>$id_question];
+
+		return $this->db->execute($sql, $params);
+		
+	}
+	public function getFacts(){ //себе:и не вздумай ее еще раз отсюда убрать
+        $sql = "SELECT * FROM Fact ORDER BY RAND()";
+      
+        return $this->db->queryAll($sql);
+    }
+	
 }

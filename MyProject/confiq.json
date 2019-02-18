@@ -1,57 +1,91 @@
 {
+	"db" : {
+		"server":"localhost",
+		"dbname":"project_igra",
+		"user":"root",
+		"pwd":""
+	},
 	"urls":{
-		"questions_flora":{
-			"path":"Aleksandra/Igra/categories/question/{category}/flora",
-			"controller":"CategoriesController::questionAction"
+		"main":{
+			"path":"/",
+			"controller":"Aleksandra\\Igra\\Controllers\\IndexController::indexAction",
+			"method": "GET"
 		},
-		"questions_aroundWorld":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/aroundWorld",
-			"controller":"CategoriesController::questionAction"
+		"get_categ_questions":{
+			"path":"/{categName}/questions",
+			"controller":"Aleksandra\\Igra\\Controllers\\CategoriesController::questionAction",
+			"method":"GET"
 		},
-		"questions_progress":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/progress",
-			"controller":"CategoriesController::questionAction"
+		"get_answer":{
+			"path":"/result",
+			"controller":"Aleksandra\\Igra\\Controllers\\CategoriesController::questionHandlerAction",
+			"method":"POST"
 		},
-		"questions_food":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/food",
-			"controller":"CategoriesController::questionAction"
+		"show_facts":{
+			"path":"/facts",
+			"controller":"Aleksandra\\Igra\\Controllers\\FactsController::showFactAction",
+			"method":"GET"
 		},
-		"questions_history":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/history",
-			"controller":"CategoriesController::questionAction"
-		},
-		"questions_sport":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/sport",
-			"controller":"CategoriesController::questionAction"
-		},
-		"questions_art":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/art",
-			"controller":"CategoriesController::questionAction"
-		},
-		"questions_literature":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/literature",
-			"controller":"CategoriesController::questionAction"
-		},
-		"questions_cat_in_bag":{
-			"path":"/Aleksandra/Igra/categories/question/{category}/cat_in_bag",
-			"controller":"CategoriesController::questionAction"
-		},
-		"interesting_fact":{
-			"path":"/Aleksandra/Igra/{id}/fact",
-			"controller":"FactsController::indexAction"
+		"show_one_fact":{
+			"path":"/{id}/fact",
+			"controller":"Aleksandra\\Igra\\Controllers\\FactsController::oneFactAction",
+			"method":"GET"
 		},
 		"rulls_add_question":{
-			"path":"Aleksandra/Igra/rulls",
-			"controller":"InfoController::getRulls"
+			"path":"/rulls",
+			"controller":"Aleksandra\\Igra\\Controllers\\InfoController::rullsAction",
+			"method": "GET"
 		},
 		"about":{
-			"path":"Aleksandra/Igra/about",
-			"controller":"InfoController::getAbout"
+			"path":"/about",
+			"controller":"Aleksandra\\Igra\\Controllers\\InfoController::aboutAction",
+			"method": "GET"
 		},
 		"news":{
-			"path":"Aleksandra/Igra/news",
-			"controller":"InfoController::getNews"
-		}
+			"path":"/news",
+			"controller":"Aleksandra\\Igra\\Controllers\\InfoController::newsAction",
+			"method": "GET"
+		},
+		"quick_game":{
+			"path":"/quick_game",
+			"controller":"Aleksandra\\Igra\\Controllers\\InfoController::quickAction",
+			"method": "GET"
+		},
+    	"alert":{
+      		"path":"/alert",
+      		"controller":"Aleksandra\\Igra\\Controllers\\AccountController::errorAction",
+      		"method": "GET"
+    	},
+		"auth":{
+      		"path":"/user/authorization",
+      		"controller":"Aleksandra\\Igra\\Controllers\\AccountController::authAction",
+      		"method": "POST"
+    	},
+    	"registration":{
+      		"path":"/user/registration",
+      		"controller":"Aleksandra\\Igra\\Controllers\\AccountController::registrationAction",
+      		"method": "POST"
+    	},
+    	"account":{
+      		"path":"/user/account",
+      		"controller":"Aleksandra\\Igra\\Controllers\\AccountController::accountAction",
+      		"method": "GET"
+    	},
+    	"out":{
+        "path":"/out",
+        "controller":"Aleksandra\\Igra\\Controllers\\AccountController::logoutAction",
+        "method": "GET"
+        },
+        "score":{
+      		"path":"/user/score",
+      		"controller":"Aleksandra\\Igra\\Controllers\\AccountController::addScoreAction",
+      		"method": "POST"
+    	},
+    	"add_own_question":{
+      		"path":"/user/add_question",
+      		"controller":"Aleksandra\\Igra\\Controllers\\AccountController::addQuestionAction",
+      		"method": "POST"
+    	}
 		
 	}
 }

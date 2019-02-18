@@ -1,6 +1,5 @@
 .fact{
-	/*background: rgba(242,255,170, 0.4);*/
-	height: 100vh;
+	/*height: 100vh;*/
 	max-width: 1004px;
 	min-width: 430px;
 	margin: 0 auto;
@@ -8,7 +7,12 @@
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+}
+.content{
+	background: rgba(242,255,170, 0.4);
+	margin-bottom: 10px;
 	border-radius: 5px;
+	padding: 7px;
 }
 .text{
 	font-size: 1rem;
@@ -23,7 +27,7 @@
     float: left;
 }
 .picture img{
-    max-width: 100%;
+    max-width: 435px;
     max-height: 100%;
     border-radius: 5px;
     box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);

@@ -1,147 +1,112 @@
 <main>
-<?php
-$categ1 = [
-	[
-		'title' => 'Флора и фауна',
-		'icon' => 'salamandra.svg'
-	],
-	[
-		'title' => 'О, да, еда!',
-		'icon' => 'food.png'
-	],
-	[
-		'title' => 'Литература',
-		'icon' => 'ink.svg'
-	]
-];
-$categ2 = [
-	[
-		'title' => 'История',
-		'icon' => 'sandglass.png'
-	],
-	[
-		'title' => 'Технический прогресс',
-		'icon' => 'progress.png'
-	],
-	[
-		'title' => 'Искусство и культура',
-		'icon' => 'column.svg'
-	]
-];
-$categ3 = [
-	[
-		'title' => 'Вокруг света',
-		'icon' => 'earth.svg'
-	],
-	[
-		'title' => 'Спорт',
-		'icon' => 'sport.png'
-	],
-	[
-		'title' => 'Кот в мешке',
-		'icon' => 'cat_in_bag.png'
-	]
-];
-?>
-		<div class="col_categ">	
-		<?php foreach ($categ1 as $arr): ?>
-			<div class="categ">
-				<a target="_blank" href="categories/question/flora">
+	<div class="col_categ">	
+		<?php foreach ($categories as $arr): ?>
+		<div class="categ">
+			<a  href='/<?php echo $arr['categName']; ?>/questions'>
 				<img class="icon" src="img/<?php echo $arr['icon'];?>" alt="categoria">
-				<h3><?php echo $arr['title']  ?></h3></a>
-			</div>
-		<?php endforeach; ?>
+				<h3><?php echo $arr['title']  ?></h3>
+			</a>
 		</div>
-		<div class="col_categ">
-			<?php foreach ($categ2 as $arr): ?>
-			<div class="categ">
-				<a target="_blank" href="categories/question/flora">
-				<!-- <img class="icon" src="/icons/<?php echo $arr['icon'];?>" alt=<? echo $arr['icon'];?>> -->
-				<img class="icon" src="img/<?php echo $arr['icon'];?>" alt="categoria"> 
-				<h3><?php echo $arr['title']  ?></h3></a>
-			</div>
 		<?php endforeach; ?>
-		</div>
-		<div class="col_categ">
-			<?php foreach ($categ3 as $arr): ?>
-			<div class="categ">
-				<a target="_blank" href="categories/question/flora">
-				<img class="icon" src="img/<?php echo $arr['icon'];?>" alt="categoria">
-				<h3><?php echo $arr['title']  ?></h3></a>
-			</div>
-		<?php endforeach; ?>
-		</div>
-		<div class="col"> 
+	</div>		
+	<div class="col"> 
+		<div class="col_top">
 			<div class="sendQuest">
-				<p><a href="#openModal3">Станьте автором вопроса</a></p>
-				<p><a href="">Правила написания вопросов</a></p>
+				<p><a href="/quick_game">Быстрая игра</a></p>
+				<p><a href="#openModal3"">Станьте автором вопроса</a></p>
+				<p><a href="/rulls">Правила написания вопросов</a></p>
 				<div id="openModal3" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Сформируйте ваш вопрос</h3>    
-                    <a href="#close" title="Close" class="close">&#9746</a>
-                </div>
-                <div class="modal-body">
-				<form>
-					<legend>Напишите вопрос</legend>
-					<textarea name="sendQuest" rows="5" cols="45" placeholder="Ваш вопрос..."></textarea>
-				<div class="addinfo">
-				<div class="leftSend">
-					<li class="q"><input type="text" name="" placeholder="Правильный ответ"></li>
-					<li class="q"><input type="text" name="" placeholder="НЕправильный ответ"></li>
-					<li class="q"><input type="text" name="" placeholder="НЕправильный ответ"></li>
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3>Сформируйте ваш вопрос</h3>    
+								<a href="#close" title="Close" class="close">&#9746</a>
+							</div>
+							<div class="modal-body">
+								<form name="add_question" action="/user/add_question" method="post">
+									<div class="selectCateg">
+										<select class="" name="select_category" id="category">
+											<option>Флора и фауна</option>
+											<option>О, да, еда!</option>
+											<option>Вокруг света</option>
+											<option>Искусство и культура</option>
+											<option>История</option>
+											<option>Спорт</option>
+											<option>Литература</option>
+											<option>Технический прогресс</option>
+											<option>Кот в мешке</option>
+										</select>
+									</div>
+									<div class="addinfo">               			
+										<textarea name="text" rows="5" cols="45" id="text" placeholder="Текст вопроса..." required="required"></textarea>
+									</div>
+									<div class="addinfo">	
+										<li class="q"><input type="text" id="right_answer" name="right_answer" placeholder="Правильный ответ" required></li>
+										<li class="q"><input type="text" id="wrong1" name="wrong1" placeholder="НЕправильный ответ 1" required></li>
+										<li class="q"><input type="text" id="wrong2" name="wrong2" placeholder="НЕправильный ответ 2" required></li>
+										<li class="q"><input type="text" id="tip" name="tip" placeholder="Подсказка" required></li>
+										<li class="q"><input type="text" id="source" name="source" placeholder="Источник информации" required></li>
+										<li class="hidden"><input type="text" name="User_id">Echo...</li>
+										<li class="q"><button type="submit">Отправить вопрос</button></li>
+									</div>
+								</form>
+						<script type="text/javascript" src="/js/sendQuestion.js"></script>		
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="rightSend">
-					<li class="q"><input type="text" name="" placeholder="Подсказка"></li>
-					<li class="q"><input type="text" name="" placeholder="Источник информации"></li>
-					<li class="q"><button type="submit">Отправить вопрос</button></li>
-				</div>
-				</div>
-				</form>
 			</div>
-            </div>
-        </div>
-    </div></div>
-			<!--можно добавить arrray_rand php чтобы случайные штуки каждый раз выводить при обновлении-->
+			<div class="calend_ru">
+				<a href=http://www.calend.ru/holidays/unusual/ target=_blank>
+				<img src="https://www.calend.ru/img/export/informer_unusual.png" width="150" alt="Необычные праздники" border="0"></a>
+			</div>
+		</div>
+			
 			<ul id="slides">
-				<li class="slide showing"><img src='img/mexico.jpg' alt="">
-					<a class="describe" href="#"><?php include_DIR_.'php/slider.php';echo $slides[0]['describe'] ?></a><br />
-					<a class="desc1" href="#"></a>
-				</li>
-				<li class="slide"><img src="img/mosquito.jpg"  alt="">
+				<!--выводить из бд начиная со второго слайда?-->
+				<li class="showing slide"><img src='/img/<?php echo $facts[0]['img'];?>' alt="">
 					<div class="wrap-text">
 						<div>
-					<a class="describe" href='#'>А вы знали, что любимый цвет комаров - синий?</a><br />
-					<a class="desc1" href="#">Удивительные факты о комарах...</a>
+					<a class="describe" href='/<?php echo $facts[0]['id']; ?>/fact'><?php echo $facts[0]['slider_caption1']; ?></a><br />
+					<a class="desc1" href='/<?php echo $facts[0]['id']; ?>/fact'><?php echo $facts[0]['slider_caption2']; ?></a>
 						</div>
 					</div>
 				</li>
-				<li class="slide"><img src="img/zurich.jpg"  alt="">
+				<!--<?php // foreach ($facts as $arr): ?> -->
+				<li class="slide"><img src="/img/<?php echo $facts[1]['img'];?>"  alt="">
 					<div class="wrap-text">
 						<div>
-					<a class="describe" href="facts">Самый дорогой город на планете.</a><br />
-					<a class="desc1" href="facts">Как вы думаете, какой?</a>
+					<a class="describe" href='/<?php echo $facts[1]['id']; ?>/fact'><?php echo $facts[1]['slider_caption1']; ?></a><br />
+					<a class="desc1" href='/<?php echo $facts[1]['id']; ?>/fact'><?php echo $facts[1]['slider_caption2']; ?></a>
 						</div>
 					</div>
 				</li>
-				<li class="slide"><img src="img/tarantul.jpg" alt="">
+				<li class="slide"><img src="/img/<?php echo $facts[2]['img'];?>"  alt="">
 					<div class="wrap-text">
 						<div>
-					<a class="describe" href="facts">Тарантул может обходиться без пищи около 2 лет!</a><br />
-					<a class="desc1" href="facts">Стоит ли бояться голодного тарантула?</a>
+					<a class="describe" href='/<?php echo $facts[2]['id']; ?>/fact'><?php echo $facts[2]['slider_caption1']; ?></a><br />
+					<a class="desc1" href='/<?php echo $facts[2]['id']; ?>/fact'><?php echo $facts[2]['slider_caption2']; ?></a>
 						</div>
 					</div>
 				</li>
-				<li class="slide"><img src="img/turtle.jpg"  alt="">
+				<li class="slide"><img src="/img/<?php echo $facts[3]['img'];?>"  alt="">
 					<div class="wrap-text">
 						<div>
-					<a class="describe" href='#'>Это первое животное, попавшее на Луну.</a><br />
-					<a class="desc1" href="#">Кто еще был на Луне?</a>
+					<a class="describe" href='/<?php echo $facts[3]['id']; ?>/fact'><?php echo $facts[3]['slider_caption1']; ?></a><br />
+					<a class="desc1" href='/<?php echo $facts[3]['id']; ?>/fact'><?php echo $facts[3]['slider_caption2']; ?></a>
+						</div>
+					</div>
+				</li>
+				<li class="slide"><img src="/img/<?php echo $facts[4]['img'];?>"  alt="">
+					<div class="wrap-text">
+						<div>
+					<a class="describe" href='/<?php echo $facts[4]['id']; ?>/fact'><?php echo $facts[4]['slider_caption1']; ?></a><br />
+					<a class="desc1" href='/<?php echo $facts[4]['id']; ?>/fact'><?php echo $facts[4]['slider_caption2']; ?></a>
 						</div>
 					</div>
 				</li>
 			</ul>
-			<script type="text/javascript" src="js/slider.js"></script>
-		</div>
+				<!-- <?php // endforeach; ?> -->
+			<script type="text/javascript" src="js/slider.js"></script>		
+	</div>
 </main>

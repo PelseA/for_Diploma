@@ -6,6 +6,8 @@
 	flex-wrap: wrap;
 }
 .vopros{
+	margin: 0 auto;
+	text-align: center;
 	width: 47%;
 	background: linear-gradient(225deg,#E0FF9D,#D3FF73,#B2E652,#A0D440,#91C531,#76AF0D,#5DA411);
 	border-radius: 1em;
@@ -57,7 +59,7 @@
         }
 
         /* свойства для блока, содержащего контент модального окна */
-        .modal-content {
+        .modal-content-tip {
             position: relative;
             display: -webkit-box;
             display: -webkit-flex;
@@ -68,7 +70,7 @@
             -webkit-flex-direction: column;
             -ms-flex-direction: column;
             flex-direction: column;
-            background-color:#AA3CFF;
+            background: linear-gradient(45deg,#E0FF9D,#D3FF73,#A0D440,#91C531,#76AF0D);
             -webkit-background-clip: padding-box;
             background-clip: padding-box;
             border: 1px solid rgba(0, 0, 0, .2);
@@ -77,7 +79,7 @@
         }
 
         @media (min-width: 768px) {
-            .modal-content {
+            .modal-content-tip {
                 -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
                 box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
             }
